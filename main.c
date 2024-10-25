@@ -28,19 +28,19 @@ int main(int argc, char* argv[]) {
   filename = argv[1];
   // Cargar la imagen (no paralelizable)
   cargarImagen(imagen, width, height);
-  /* int numHilos = omp_get_num_procs()/2; // Para ejecución 2. */
-  int numHilos = omp_get_num_procs(); // Para ejecución 1.
+  /* int numHilos = omp_get_num_procs()/2; // Para ejecución 1. */
+  int numHilos = omp_get_num_procs(); // Para ejecución 2.
   omp_set_num_threads(numHilos);
 
-  // Aplicar filtro (paralelizable)
+  // Aplicar filtro (zona paralelizada)
   aplicarFiltro(imagen, imagenProcesada, width, height);
 
-  // Calcular suma de píxeles (parte paralelizable)
+  // Calcular suma de píxeles (zona paralelizada)
   int sumaPixeles = calcularSumaPixeles(imagenProcesada, width, height);
 
   printf("Suma de píxeles: %d\n", sumaPixeles);
 
-  // Guardar la imagen (no paralelizable)
+  // Guardar la imagen (no paralelizada)
   guardarImagen(imagenProcesada, width, height);
 
   free(imagen);
@@ -84,7 +84,7 @@ void guardarImagen(int *imagen, int width, int height) {
   fclose(archivo);
 }
 
-// Versión secuencial
+// Versión secuencia
 /* void aplicarFiltro(int *imagen, int *imagenProcesada, int width, int height) { */
 /*   int Gx[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}}; */
 /*   int Gy[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}}; */
