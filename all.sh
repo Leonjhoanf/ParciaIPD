@@ -20,7 +20,4 @@ for image in images/*.png; do
     
 done
 
-# Limpiar archivos temporales
-rm -f "images/*.bin" "images/*.bin.new"
-
 echo "Procesamiento de todas las imágenes completado."
