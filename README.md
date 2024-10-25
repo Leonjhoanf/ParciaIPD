@@ -1,3 +1,7 @@
+# Jhoan Felipe Leon
+## Codigo : 2228527
+
+## Parcial IPD
 
 ### Análisis de Desempeño y Aceleración del Programa Paralelizado
 
